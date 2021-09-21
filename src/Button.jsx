@@ -1,6 +1,9 @@
+import classNames from "classnames";
+
 function Button() {
-    return(
-        <a href="/cart.html" className="button button--cart">
+  return (
+    <div className="header__cart">
+      <a href="/cart.html" className="button">
         <span>520 ₽</span>
         <div className="button__delimiter"></div>
         <svg
@@ -34,8 +37,8 @@ function Button() {
         </svg>
         <span>3</span>
       </a>
-        )
+    </div>
+  );
 }
 
-
-export default Button
+export default Button;
