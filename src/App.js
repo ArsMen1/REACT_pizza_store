@@ -9,8 +9,9 @@ function App() {
         <div className="container">
           <div className="content__top">
             <Categories
-              clickCategorie={(categoriesName) => alert(categoriesName)}
+              clickCategorie={(categoriesName) => console.log(categoriesName)}
               items={[
+                "Все",
                 "Мясные",
                 "Вегетарианская",
                 "Гриль",
