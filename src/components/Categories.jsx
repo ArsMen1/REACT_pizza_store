@@ -1,11 +1,25 @@
-function Categories({ items, clickCategorie }) {
+import React from "react";
+
+function Categories({ items }) {
+  const [activeItem, setActiveItem] = React.useState(null);
+
+  const oneSelectItem = (index) => {
+    setActiveItem(index);
+  };
+
   return (
     <div className="categories">
       <ul>
-        <li className="active">Все</li>
+        <li
+          className={activeItem === null ? "active" : ""}
+          onClick={() => oneSelectItem(null)}
+        >
+          Все
+        </li>
         {items.map((categoriesName, index) => (
           <li
-            onClick={() => clickCategorie(categoriesName)}
+            className={activeItem === index ? "active" : ""}
+            onClick={() => oneSelectItem(index)}
             key={`${categoriesName}_${index}`}
           >
             {categoriesName}
@@ -18,8 +32,7 @@ function Categories({ items, clickCategorie }) {
 
 export default Categories;
 
-/* КЛАССОВЫЙ КОМПОНЕНТ
-import React from "react";
+/* КЛАССОВЫЙ КОМПОНЕНТ || setState
 
 class Categories extends React.Component {
   state = {
