@@ -16,15 +16,16 @@ function Categories({ items }) {
         >
           Все
         </li>
-        {items.map((categoriesName, index) => (
-          <li
-            className={activeItem === index ? "active" : ""}
-            onClick={() => oneSelectItem(index)}
-            key={`${categoriesName}_${index}`}
-          >
-            {categoriesName}
-          </li>
-        ))}
+        {items &&
+          items.map((categoriesName, index) => (
+            <li
+              className={activeItem === index ? "active" : ""}
+              onClick={() => oneSelectItem(index)}
+              key={`${categoriesName}_${index}`}
+            >
+              {categoriesName}
+            </li>
+          ))}
       </ul>
     </div>
   );
