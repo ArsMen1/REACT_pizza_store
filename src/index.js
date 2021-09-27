@@ -1,13 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrouserRouter } from "react-router-dom";
+
 import "./scss/app.scss";
+
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   //StrictMode - Более детально обьясняет ошибки
   <React.StrictMode>
-    <App />
+    <BrouserRouter>
+      <App />
+    </BrouserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
