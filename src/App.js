@@ -1,6 +1,6 @@
 import React from "react";
 import { Header } from "./components";
-import Home from "./pages/Home";
+import { Home, Cart } from "./pages";
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrouserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import "./scss/app.scss";
 
@@ -10,9 +10,9 @@ import reportWebVitals from "./reportWebVitals";
 ReactDOM.render(
   //StrictMode - Более детально обьясняет ошибки
   <React.StrictMode>
-    <BrouserRouter>
+    <BrowserRouter>
       <App />
-    </BrouserRouter>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
