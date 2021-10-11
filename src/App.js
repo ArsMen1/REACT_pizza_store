@@ -26,6 +26,19 @@ function App() {
 
 PizzaBlock.propTypes = {
   name: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  types: PropTypes.arrayOf(PropTypes.number).isRequired,
+  sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
+
+PizzaBlock.defaultProps = {
+  name: "Нет в наличии",
+  types: [],
+  imageUrl:
+    "https://thumbs.gfycat.com/WanSophisticatedAntelope-size_restricted.gif",
+  price: 0,
+  sizes: [],
 };
 
 export default App;
