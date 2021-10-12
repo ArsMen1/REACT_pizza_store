@@ -1,16 +1,9 @@
-import { createeStare } from "redux";
+import { createStore } from "redux";
 
-function counter(state = 0, action) {
-  switch (action.type) {
-    case "INCREMENT":
-      return state + 1;
-    case "DECREMENT":
-      return state - 1;
-    default:
-      return state;
-  }
-}
+import rootReducer from "./reducers";
 
-const store = createeStare(counter);
+const store = createStore(rootReducer);
+
+window.store = store;
 
 export default store;

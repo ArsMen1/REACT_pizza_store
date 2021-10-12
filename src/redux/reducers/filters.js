@@ -10,6 +10,12 @@ const filters = (state = initialState, action) => {
       sotrBy: action.payload,
     };
   }
+  if (action.type === "SET_CATEGORY") {
+    return {
+      ...state,
+      category: action.payload,
+    };
+  }
   return state;
 };
 
