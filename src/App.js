@@ -1,12 +1,33 @@
 import axios from "axios";
 import PropTypes from "prop-types";
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Route } from "react-router";
 import { Header, PizzaBlock } from "./components";
 import { Home, Cart } from "./pages";
 import { setPizzas } from "./redux/actions/pizzas";
 
+function App() {
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    axios.get("http://localhost:3004/db.json").then(({ data }) => {
+      dispatch(setPizzas(data));
+    });
+  }, []);
+
+  return (
+    <div className="wrapper">
+      <Header />
+      <div className="content">
+        <Route path="/" component={Home} exact />
+        <Route path="/cart" component={Cart} exact />
+      </div>
+    </div>
+  );
+}
+
+/* Классовый компонент
 class App extends React.Component {
   componentDidMount() {
     axios.get("http://localhost:3000/db.json").then(({ data }) => {
@@ -30,6 +51,7 @@ class App extends React.Component {
     );
   }
 }
+*/
 
 PizzaBlock.propTypes = {
   name: PropTypes.string.isRequired,
@@ -48,15 +70,17 @@ PizzaBlock.defaultProps = {
   sizes: [],
 };
 
-const mapStateToProps = (state) => {
-  return {
-    items: state.pizzas.items,
-  };
-};
+export default App;
+// const mapStateToProps = (state) => {
+//   return {
+//     items: state.pizzas.items,
+//     filters: state.filters,
+//   };
+// };
 
-const mapDispatchToProps = {
-  setPizzas,
-};
+// const mapDispatchToProps = {
+//   setPizzas,
+// };
 
 // ↓ Более развернутая запись
 // const mapDispatchToProps = (dispatch) => {
@@ -66,4 +90,4 @@ const mapDispatchToProps = {
 //   };
 // };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
