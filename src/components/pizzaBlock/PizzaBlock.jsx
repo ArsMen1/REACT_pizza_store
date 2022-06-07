@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import PropTypes from "prop-types";
 import React from "react";
 
 function PizzaBlock({ name, imageUrl, price, types, sizes }) {
@@ -38,7 +39,7 @@ function PizzaBlock({ name, imageUrl, price, types, sizes }) {
         <ul>
           {aviableSizes.map((size, index) => (
             <li
-              key={sizes}
+              key={index}
               onClick={() => oneSelectSizes(index)}
               className={classNames({
                 active: activeSize === index,
@@ -72,5 +73,22 @@ function PizzaBlock({ name, imageUrl, price, types, sizes }) {
     </div>
   );
 }
+
+PizzaBlock.propTypes = {
+  name: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  types: PropTypes.arrayOf(PropTypes.number).isRequired,
+  sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
+
+PizzaBlock.defaultProps = {
+  name: "Нет в наличии",
+  types: [],
+  imageUrl:
+    "https://thumbs.gfycat.com/WanSophisticatedAntelope-size_restricted.gif",
+  price: 0,
+  sizes: [],
+};
 
 export default PizzaBlock;

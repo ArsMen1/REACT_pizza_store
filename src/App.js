@@ -1,21 +1,9 @@
-import axios from "axios";
-import PropTypes from "prop-types";
 import React from "react";
-import { useDispatch } from "react-redux";
 import { Route } from "react-router";
-import { Header, PizzaBlock } from "./components";
+import { Header } from "./components";
 import { Home, Cart } from "./pages";
-import { setPizzas } from "./redux/actions/pizzas";
 
 function App() {
-  const dispatch = useDispatch();
-
-  React.useEffect(() => {
-    axios.get("http://localhost:3004/db.json").then(({ data }) => {
-      dispatch(setPizzas(data));
-    });
-  }, []);
-
   return (
     <div className="wrapper">
       <Header />
@@ -52,23 +40,6 @@ class App extends React.Component {
   }
 }
 */
-
-PizzaBlock.propTypes = {
-  name: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  types: PropTypes.arrayOf(PropTypes.number).isRequired,
-  sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
-};
-
-PizzaBlock.defaultProps = {
-  name: "Нет в наличии",
-  types: [],
-  imageUrl:
-    "https://thumbs.gfycat.com/WanSophisticatedAntelope-size_restricted.gif",
-  price: 0,
-  sizes: [],
-};
 
 export default App;
 // const mapStateToProps = (state) => {
